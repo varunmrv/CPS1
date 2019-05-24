@@ -1,0 +1,39 @@
+#include<stdio.h>
+int input(int *a,int *b,int *c,int *d)
+{
+        printf("Enter the first fraction (like a & b in (a/b))\n");
+        scanf("%d%d",&*a,&*b);
+        printf("Enter the second Fraction(like c & d in (c/d)\n");
+        scanf("%d%d",&*c,&*d);
+}
+int add(int a,int b,int c,int d,int *nume,int *deno)
+{
+        if(b==d)
+        {
+                *nume=(a+c);
+                *deno=(b);
+        }
+        else
+        {
+                *nume=((a*d)+(b*c));
+                *deno=(b*d);
+        }
+}
+int output(int a,int b,int c,int d,int nume,int deno)
+{
+        if(deno==0)
+                printf("Sum of %d/%d + %d/%d = N.D \n",a,b,c,d);
+        else if(nume==deno)
+        {
+                printf("Sum of %d/%d + %d/%d = 1 \n",a,b,c,d);
+        }
+        else
+                printf("Sum of %d/%d + %d/%d = %d/%d \n",a,b,c,d,nume,deno);
+}
+int main()
+{
+        int a,b,c,d,nume,deno;
+        input(&a,&b,&c,&d);
+        add(a,b,c,d,&nume,&deno);
+        output(a,b,c,d,nume,deno);
+}
