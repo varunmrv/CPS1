@@ -1,0 +1,49 @@
+#include<stdio.h>
+struct fract
+{
+        int a,b;
+};
+int input(struct fract *f1,struct fract *f2)
+{
+        int m,n,o,p;
+        printf("Enter the first fraction (like a & b in (a/b))\n");
+        scanf("%d/%d",&m,&n);
+        printf("Enter the second Fraction(like c & d in (c/d)\n");
+        scanf("%d/%d",&o,&p);
+        f1->a=m;
+        f1->b=n;
+        f2->a=o;
+        f2->b=p;
+}
+int add(struct fract f1,struct fract f2,struct fract *f3)
+{
+        if(f1.b==f2.b)
+        {
+                f3->a=(f1.a+f2.a);
+                f3->b=(f1.b);
+        }
+        else
+        {
+                f3->a=((f1.a*f2.b)+(f1.b*f2.a));
+                f3->b=(f1.b*f2.b);
+        }
+}
+int output(struct fract f1,struct fract f2,struct fract f3)
+{
+        if(f3.b==0)
+                printf("Sum of %d/%d + %d/%d = N.D \n",f1.a,f1.b,f2.a,f2.b);
+        else if(f3.a==f3.b)
+        {
+                printf("Sum of %d/%d + %d/%d = 1 \n",f1.a,f1.b,f2.a,f2.b);
+        }
+        else
+                printf("Sum of %d/%d + %d/%d = %d/%d \n",f1.a,f2.b,f2.a,f2.b,f3.a,f3.b);
+}
+int main()
+{
+        struct fract f1,f2,f3;
+        input(&f1,&f2);
+        add(f1,f2,&f3);
+        output(f1,f2,f3);
+}
+
